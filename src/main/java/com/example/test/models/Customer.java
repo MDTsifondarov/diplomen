@@ -9,7 +9,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "Customers")
 @ToString
-public class Customers {
+public class Customer {
     @Id
     @Column(name = "Id",columnDefinition = "varchar(36)")
     private String id;
@@ -24,11 +24,11 @@ public class Customers {
     @Column(name = "IsAdmin",columnDefinition = "bit")
     private Boolean IsAdmin;
 
-    public Customers() {
+    public Customer() {
         id= UUID.randomUUID().toString();
     }
 
-    public Customers(String id, String firstName, String lastName, String email, String password, Boolean isAdmin) {
+    public Customer(String id, String firstName, String lastName, String email, String password, Boolean isAdmin) {
         this.id = id;
         FirstName = firstName;
         LastName = lastName;
@@ -69,7 +69,7 @@ public class Customers {
         return Password;
     }
 
-    public Customers setPassword(String password) {
+    public Customer setPassword(String password) {
         this.Password = PasswordHasher.hashPassword(password);
         return this;
     }

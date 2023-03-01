@@ -2,12 +2,11 @@ package com.example.test.models;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 @Entity
 @Table(name = "Books")
-public class Books {
+public class Book {
     @Id
     @Column(name = "Id",columnDefinition = "varchar(36)")
     private String id;

@@ -20,7 +20,7 @@ public class Category {
     @Column(name="Category")
     private String name;
     @ManyToMany(mappedBy = "categories")
-    private Set<Books> books;
+    private Set<Book> books;
 
     public Category() {
         this.Id = UUID.randomUUID().toString();
@@ -34,11 +34,11 @@ public class Category {
         this.name = name;
     }
 
-    public Set<Books> getBooks() {
+    public Set<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Books> books) {
+    public void setBooks(Set<Book> books) {
         this.books = books;
     }
 }
