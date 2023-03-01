@@ -1,6 +1,7 @@
 package com.example.test.models;
 
 
+import com.example.test.services.PasswordHasher;
 import jakarta.persistence.*;
 import lombok.ToString;
 import java.util.UUID;
@@ -23,6 +24,10 @@ public class Customers {
     @Column(name = "IsAdmin",columnDefinition = "bit")
     private Boolean IsAdmin;
 
+    public Customers() {
+        id= UUID.randomUUID().toString();
+    }
+
     public Customers(String id, String firstName, String lastName, String email, String password, Boolean isAdmin) {
         this.id = id;
         FirstName = firstName;
@@ -32,8 +37,48 @@ public class Customers {
         IsAdmin = isAdmin;
     }
 
+    public String getId() {
+        return id;
+    }
 
-    public Customers() {
+    public String getFirstName() {
+        return FirstName;
+    }
 
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String lastName) {
+        LastName = lastName;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public Customers setPassword(String password) {
+        this.Password = PasswordHasher.hashPassword(password);
+        return this;
+    }
+
+    public Boolean getAdmin() {
+        return IsAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        IsAdmin = admin;
     }
 }

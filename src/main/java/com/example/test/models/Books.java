@@ -1,77 +1,46 @@
 package com.example.test.models;
 
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.Set;
+
+@Entity
+@Table(name = "Books")
 public class Books {
-    private String Id;
+    @Id
+    @Column(name = "Id",columnDefinition = "varchar(36)")
+    private String id;
+    @Column(name = "Title",columnDefinition = "nvarchar(50)")
     private String Title;
-    private String Author;
-    private int YearPublished;
-    private String Category;
+    @Column(name = "ISBN",columnDefinition = "nvarchar(50)")
     private String ISBN;
-    private String Publisher;
+@ManyToMany
+    @JoinTable(name = "BookAuthors",
+    joinColumns = @JoinColumn(name ="BookId"),
+    inverseJoinColumns = @JoinColumn(name = "AuthorId"))
+    private Set<Author> authors;
+@ManyToMany
+    @JoinTable(name = "BooksCategories",
+            joinColumns = @JoinColumn(name ="BookId"),
+            inverseJoinColumns = @JoinColumn(name = "CategoryId"))
+    private Set<Category> categories;
 
-    public Books(String id, String title, String author, int yearPublished, String category, String ISBN, String publisher) {
-        Id = id;
-        Title = title;
-        Author = author;
-        YearPublished = yearPublished;
-        Category = category;
-        this.ISBN = ISBN;
-        Publisher = publisher;
-    }
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
-
-    public String getTitle() {
-        return Title;
-    }
-
-    public void setTitle(String title) {
-        Title = title;
-    }
-
-    public String getAuthor() {
-        return Author;
-    }
-
-    public void setAuthor(String author) {
-        Author = author;
-    }
-
-    public int getYearPublished() {
-        return YearPublished;
-    }
-
-    public void setYearPublished(int yearPublished) {
-        YearPublished = yearPublished;
-    }
-
-    public String getCategory() {
-        return Category;
-    }
-
-    public void setCategory(String category) {
-        Category = category;
-    }
-
-    public String getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public String getPublisher() {
-        return Publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        Publisher = publisher;
-    }
 }
+
+
+
+
+
+
+
+
+
+//public String getAuthorNames(){
+//    String allNames="";
+//    for(Author temp:authors){
+//       allNames= allNames.concat(temp.getName());
+//       allNames= allNames.concat(";");
+//    }
+//    return allNames;
+//}
