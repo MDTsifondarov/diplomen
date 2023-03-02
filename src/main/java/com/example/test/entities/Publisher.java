@@ -1,4 +1,4 @@
-package com.example.test.models;
+package com.example.test.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,19 +9,20 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Authors")
+@Table(name = "Publishers")
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Author {
+public class Publisher {
     @Id
     private String id;
     @Column(name="Name")
     private String name;
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "publishers")
     private Set<Book> books;
 
-    public Author() {
+    public Publisher() {
+
         this.id = UUID.randomUUID().toString();
     }
 

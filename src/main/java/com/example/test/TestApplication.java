@@ -8,7 +8,7 @@ public class TestApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TestApplication.class, args);
-        System.out.println("http://localhost:8080/");
+        System.out.println("http://localhost:8080/books");
     }
 
 }
