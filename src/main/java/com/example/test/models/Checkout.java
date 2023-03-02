@@ -16,17 +16,17 @@ public class Checkout {
     @Id
     @Column(name = "Id",columnDefinition = "varchar(36)")
     private String id;
-    @Column(name = "StartTime",columnDefinition = "timestamp")
+    @Column(name = "start_time",columnDefinition = "timestamp")
     private String StartTime;
-    @Column(name = "EndTime",columnDefinition = "datetime2(7)")
+    @Column(name = "end_time",columnDefinition = "datetime2(7)")
     private String EndTime;
-    @Column(name = "IsReturned",columnDefinition = "bit")
+    @Column(name = "is_returned",columnDefinition = "bit")
     private Boolean IsReturned;
     @OneToOne
-    @JoinColumn(name="BookId",columnDefinition = "varchar(36)")
+    @JoinColumn(name="book_id",columnDefinition = "varchar(36)")
     private Book book;
     @OneToOne
-    @JoinColumn(name="CustomerId",columnDefinition = "varchar(36)")
+    @JoinColumn(name="customer_id",columnDefinition = "varchar(36)")
     private Customer customer;
     public Checkout() {
 

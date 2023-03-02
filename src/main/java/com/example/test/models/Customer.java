@@ -13,15 +13,15 @@ public class Customer {
     @Id
     @Column(name = "Id",columnDefinition = "varchar(36)")
     private String id;
-    @Column(name = "FirstName",columnDefinition = "nvarchar(20)")
+    @Column(name = "first_name",columnDefinition = "nvarchar(20)")
     private String FirstName;
-    @Column(name = "LastName",columnDefinition = "nvarchar(20)")
+    @Column(name = "last_name",columnDefinition = "nvarchar(20)")
     private String LastName;
     @Column(name = "Email",columnDefinition = "varchar(30)",unique = true)
     private String Email;
     @Column(name = "Password",columnDefinition = "varchar(50)")
     private String Password;
-    @Column(name = "IsAdmin",columnDefinition = "bit")
+    @Column(name = "is_admin",columnDefinition = "bit")
     private Boolean IsAdmin;
 
     public Customer() {
