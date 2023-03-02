@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Actors</title></head>
+<body>
+<div class="container mt-5"><h1 class="text-center mb-5">Actors</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Title</td>
+            <td>ISBN</td>
+            <td>authors</td>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>        <!-- Your logic to get all actors goes here -->
+        <tr th:each="book: ${books}">
+
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.ISBN}"></td>
+            <td th:each="author:${book.authors}"> /// za ponedelnik
+            </td>
+            <th>
+<!--                <div class="d-flex"><a class="btn btn-warning mr-2"-->
+<!--                                       th:href="@{/books/edit/{bookId}(bookId=${book.id})}">Edit</a>-->
+<!--                    <form class="btn btn-danger" th:action="@{/books/delete/{bookId}(bookId=${book.id})}"-->
+<!--                          method="post"><input type="submit" class="btn btn-danger" name="delete" value="Delete"></form>-->
+<!--                </div>-->
+            </th>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-success mt-3 mb-5" href="/actors/create" role="button">Add New Actor</a></div>
+</body>
+</html>

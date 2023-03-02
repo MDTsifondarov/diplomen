@@ -1,26 +1,33 @@
 package com.example.test.controllers;
 
 
-import com.example.test.models.Book;
+
+import com.example.test.entities.Book;
 import com.example.test.repositories.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
+@RequestMapping("/books")
 public class BookController {
 
     @Autowired
-    BooksRepository booksRepository;
+    private BooksRepository booksRepository;
 
-    @GetMapping("/books")
-    public List<Book> getAllBooks() {
+    @GetMapping
+    public String getAllBooks(Model model) {
 
-        for(Book book:booksRepository.findAll()){
-            System.out.println(book.getTitle());
+        List<Book> result = new ArrayList<>(booksRepository.findAll());
+        for (Book book:result){
+            System.out.println(book);
         }
-        return booksRepository.findAll();
+       model.addAttribute("books",result);
+       return "books/list";
     }
 }

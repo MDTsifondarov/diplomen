@@ -1,58 +1,66 @@
-package com.example.test.models;
+package com.example.test.entities;
 
 import jakarta.persistence.*;
 import lombok.ToString;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Table(name = "Books")
-@ToString
 public class Book {
     @Id
-    @Column(name = "Id",columnDefinition = "varchar(36)")
+    @Column(name = "Id", columnDefinition = "varchar(36)")
     private String id;
-    @Column(name = "Title",columnDefinition = "nvarchar(50)")
-    private String Title;
-    @Column(name = "ISBN",columnDefinition = "nvarchar(50)")
+    @Column(name = "Title", columnDefinition = "nvarchar(50)")
+    private String title;
+    @Column(name = "ISBN", columnDefinition = "nvarchar(50)")
     private String ISBN;
 @ManyToMany
     @JoinTable(name = "books_authors",
     joinColumns = @JoinColumn(name ="book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
-@ManyToMany
-    @JoinTable(name = "books_categories",
-            joinColumns = @JoinColumn(name ="book_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Author> authors;
+    @ManyToMany
+    @JoinTable(name = "Books_Categories", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories;
     @ManyToMany
-    @JoinTable(name = "books_publishers",
-            joinColumns = @JoinColumn(name ="book_id"),
-            inverseJoinColumns = @JoinColumn(name = "publisher_id"))
+    @JoinTable(name = "books_publishers", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "publisher_id"))
     private Set<Publisher> publishers;
 
-
     public Book() {
-        id= UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString();
     }
 
-    public Book(String id, String title, String ISBN, Set<Author> authors, Set<Category> categories, Set<Publisher> publishers) {
+    public Book(String id, String title, String ISBN, List<Author> authors, Set<Category> categories, Set<Publisher> publishers) {
         this.id = id;
-        Title = title;
+        this.title = title;
         this.ISBN = ISBN;
         this.authors = authors;
         this.categories = categories;
         this.publishers = publishers;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getISBN() {
@@ -63,11 +71,11 @@ public class Book {
         this.ISBN = ISBN;
     }
 
-    public Set<Author> getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Set<Author> authors) {
+    public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
 

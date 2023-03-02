@@ -1,4 +1,4 @@
-package com.example.test.models;
+package com.example.test.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
