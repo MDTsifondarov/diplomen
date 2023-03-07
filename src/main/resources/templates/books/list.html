@@ -12,33 +12,44 @@
     <table class="table table-bordered">
         <thead>
         <tr>
+            <td>Image</td>
             <td>Title</td>
             <td>ISBN</td>
             <td>YearPublished</td>
             <td>Status</td>
+            <td>Category</td>
             <td>Authors</td>
-
+            <td>Publisher</td>
 
         </tr>
         </thead>
         <tbody>        <!-- Your logic to get all actors goes here -->
-        <tr th:each="book: ${books}">
-
+        <tr th:each="book:${books}">
+            <td ><div><img th:src="@{resources/images/HP.jpg}" /></div></td>
             <td th:text="${book.title}"></td>
             <td th:text="${book.ISBN}"></td>
             <td th:text="${book.year_published}"></td>
             <td th:text="${book.status}"></td>
-            <td th:each="author:${book.getAuthors()}"></td>
+            <td th:each="category:${book.getCategories()}">
+                <div th:text="${category.name}"> </div>
+            </td>
+            <td th:each="author:${book.getAuthors()}">
+               <div th:text="${author.firstName + ' ' + author.lastName}"> </div>
+            </td>
+            <td th:each="publisher:${book.getPublishers()}">
+                <div th:text="${publisher.name}"> </div>
+            </td>
 
 
 
-               <!--     <th> -->
-<!--                <div class="d-flex"><a class="btn btn-warning mr-2"-->
-<!--                                       th:href="@{/books/edit/{bookId}(bookId=${book.id})}">Edit</a>-->
-<!--                    <form class="btn btn-danger" th:action="@{/books/delete/{bookId}(bookId=${book.id})}"-->
-<!--                          method="post"><input type="submit" class="btn btn-danger" name="delete" value="Delete"></form>-->
-<!--                </div>-->
-          <!--  </th> -->
+
+            <!--     <th> -->
+            <!--                <div class="d-flex"><a class="btn btn-warning mr-2"-->
+            <!--                                       th:href="@{/books/edit/{bookId}(bookId=${book.id})}">Edit</a>-->
+            <!--                    <form class="btn btn-danger" th:action="@{/books/delete/{bookId}(bookId=${book.id})}"-->
+            <!--                          method="post"><input type="submit" class="btn btn-danger" name="delete" value="Delete"></form>-->
+            <!--                </div>-->
+            <!--  </th> -->
         </tr>
         </tbody>
     </table>

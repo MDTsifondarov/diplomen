@@ -3,7 +3,7 @@ package com.example.test.controllers;
 
 
 import com.example.test.entities.Book;
-import com.example.test.repositories.BooksRepository;
+import com.example.test.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +18,14 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BooksRepository booksRepository;
+    private BookRepository bookRepository;
 
     @GetMapping
     public String getAllBooks(Model model) {
 
-        List<Book> result = new ArrayList<>(booksRepository.findAll());
+        List<Book> result = new ArrayList<>(bookRepository.findAll());
         for (Book book:result){
-            System.out.println(book);
+            System.out.println(book+" "+book.getCategories());
         }
        model.addAttribute("books",result);
         //System.out.println(result.get(0).getAuthors());

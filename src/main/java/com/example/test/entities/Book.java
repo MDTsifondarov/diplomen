@@ -55,9 +55,6 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", ISBN='" + ISBN + '\'' +
                 ", year_published=" + year_published +
-                ", authors=" + authors +
-                ", categories=" + categories +
-                ", publishers=" + publishers +
                 '}';
     }
 
