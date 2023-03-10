@@ -3,7 +3,6 @@ package com.example.test.controllers;
 
 
 import com.example.test.entities.Book;
-import com.example.test.entities.Category;
 import com.example.test.repositories.BookRepository;
 import com.example.test.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

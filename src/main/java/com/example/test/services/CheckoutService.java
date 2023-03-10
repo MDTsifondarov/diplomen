@@ -1,7 +1,6 @@
 package com.example.test.services;
 
 import com.example.test.entities.Checkout;
-import com.example.test.entities.Customer;
 import com.example.test.repositories.CheckoutRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

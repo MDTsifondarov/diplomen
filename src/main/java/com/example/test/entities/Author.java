@@ -3,7 +3,6 @@ package com.example.test.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import java.util.Set;
 import java.util.UUID;

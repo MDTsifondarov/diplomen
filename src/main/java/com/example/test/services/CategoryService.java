@@ -1,6 +1,5 @@
 package com.example.test.services;
 
-import com.example.test.entities.Book;
 import com.example.test.entities.Category;
 import com.example.test.repositories.CategoryRepository;
 import lombok.AllArgsConstructor;

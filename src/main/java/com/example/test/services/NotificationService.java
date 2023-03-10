@@ -1,6 +1,5 @@
 package com.example.test.services;
 
-import com.example.test.entities.Customer;
 import com.example.test.entities.Notification;
 import com.example.test.repositories.NotificationRepository;
 import lombok.AllArgsConstructor;
